@@ -9,8 +9,21 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        NavigationView {
+            ScrollView(showsIndicators: false) {
+                // MARK: Custom View
+                CompositionalView(items: 1...55, id: \.self) { item in
+                    ZStack {
+                        Rectangle()
+                            .fill(.gray)
+                        Text("\(item)")
+                            .font(.title.bold())
+                            .foregroundColor(.white)
+                    }
+                }
+            }
+            .navigationBarHidden(true)
+        }
     }
 }
 
